@@ -1,0 +1,4 @@
+**/*.o
+# Example databases
+*.txt
+cms
