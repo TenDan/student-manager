@@ -61,8 +61,14 @@ void print_record(student_record *record) {
 
 int print_prompt() {
     printf(" > ");
-    char command[BUFFER];
-    scanf("%s", command);
+    char prompt[BUFFER];
+
+    if (fgets(prompt, BUFFER, stdin) == NULL) {
+        printf("Error occured. Try again. \n");
+        return -1;
+    }
+
+    char *command = strtok(prompt, " \n");
 
     if (strcmp(command, "add") == 0) {
         printf("Adding to database...\n");
