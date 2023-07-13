@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #define SEPARATOR ";\n"
 #define BUFFER 100
@@ -19,25 +20,29 @@ typedef struct {
  *      0: id (uint128)
  *      1: lastname (string)
  *      2: firstname (string)
- *      3: grade (float)
+ *      3: grade (float) [must be between 1 and 6 with 0.5 step]
  * @return Status code, negative value means that error occured
 */
 int update_record(char* raw_value, int field, student_record *record_ptr) {
     switch(field) {
-        case 0:
-            if ((record_ptr->id = (__uint128_t) atoi(raw_value)) == 0)
-                return -1;
+        case 0: {
+            __uint128_t new_id = (__uint128_t) atoi(raw_value);
+            if (new_id <= 0) return -1;
+            record_ptr->id = new_id;
             break;
+        }
         case 1:
             strcpy(record_ptr->lastname, raw_value);
             break;
         case 2:
             strcpy(record_ptr->firstname, raw_value);
             break;
-        case 3:
-            if ((record_ptr->grade = (float) atof(raw_value)) == 0)
-                return -1;
+        case 3: {
+            double new_grade = atof(raw_value);
+            if (new_grade < 1. || new_grade > 6. || fmod(new_grade, .5) != 0.) return -1;
+            record_ptr->grade = (float) new_grade;
             break;
+        }
         default:
             return -1;
     }

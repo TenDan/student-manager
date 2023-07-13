@@ -1,5 +1,5 @@
 CC=clang
-CFLAGS=-g -Wall
+CFLAGS=-g -Wall -lm
 BIN=cms
 
 objects := $(wildcard *.o)
