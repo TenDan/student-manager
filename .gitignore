@@ -2,3 +2,7 @@
 # Example databases
 *.txt
 cms
+
+# IDEs stuff
+.idea
+.vscode
