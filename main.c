@@ -126,8 +126,11 @@ int main(int argc, char **argv) {
         ++line_num;
     }
 
+    free(line);
+
     printf("\n");
 
     fclose(database);
+
     return 0;
 }
