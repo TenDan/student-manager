@@ -6,7 +6,7 @@
 #define SEPARATOR ";\n"
 #define BUFFER 100
 
-typedef struct {
+typedef struct student_record {
     __uint128_t id;
     char lastname[BUFFER];
     char firstname[BUFFER];
@@ -80,11 +80,15 @@ int main(int argc, char **argv) {
         //printf("Record: %s\n", line);
         
         char *token = strtok(line, SEPARATOR);
-        student_record record;
+        student_record record = { .id = 0, .lastname = "", .firstname = "", .grade = 0. };
         int j = 0;
         while (token != NULL) {
             //printf("%s\n", token);
-            if (line_num != 0) update_record(token, j, &record);
+            if (line_num != 0) {
+                int status = update_record(token, j, &record);
+                if (status == -1)
+                    printf("Failed to update some records\n");
+            }
             token = strtok(NULL, SEPARATOR);
             ++j;
         }
