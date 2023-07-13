@@ -59,6 +59,23 @@ void print_record(student_record *record) {
     printf("Grade: %f\n", record->grade);
 }
 
+int print_prompt() {
+    printf(" > ");
+    char command[BUFFER];
+    scanf("%s", command);
+
+    if (strcmp(command, "add") == 0) {
+        printf("Adding to database...\n");
+    } else if (strcmp(command, "read") == 0) {
+        printf("Reading from database...\n");
+    } else {
+        printf("Unknown command. Try again.\n");
+        return -1;
+    }
+
+    return 0;
+}
+
 int main(int argc, char **argv) {
     char *line = NULL;
     size_t line_len = 0;
@@ -66,6 +83,12 @@ int main(int argc, char **argv) {
     if (argc != 2) {
         fprintf(stderr, "Valid usage: %s <database_file>\n", argv[0]);
         return 1;
+    }
+
+    int prompt_status = print_prompt();
+
+    if (prompt_status == -1) {
+        return -1;
     }
 
     FILE *database = fopen(argv[1], "r+");
