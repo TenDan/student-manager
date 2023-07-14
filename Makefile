@@ -1,9 +1,15 @@
+# Set compiler
 CC=clang
-CFLAGS=-g -Wall -lm
+# Set compiler flags (should be valid for clang and gcc)
+CFLAGS=-g -Wall -lm -Isrc
+# Binary executable name
 BIN=cms
 
-objects := $(wildcard *.o)
-sources := $(wildcard *.c)
+# Set source global extension (depending on being C or C++ source files)
+SRC_EXTENSION = c
+
+# Link source files as wildcard
+sources := $(wildcard *.$(SRC_EXTENSION)) $(wildcard */*.$(SRC_EXTENSION))
 
 .PHONY: all clean
 
@@ -31,4 +37,4 @@ sanitize: before-debug
 
 
 clean:
-	$(RM) -r $(BIN) $(objects) *.dSYM
+	$(RM) -r $(BIN) *.dSYM
