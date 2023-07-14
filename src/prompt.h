@@ -7,6 +7,10 @@
 
 #define BUFFER 1000
 
+/**
+ * Printing the prompt for database management
+ * @return Status code, negative value if error occured
+*/
 int print_prompt();
 
 #endif /* PROMPT_H_ */
