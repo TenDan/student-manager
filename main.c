@@ -4,6 +4,7 @@
 
 #include "record.h"
 #include "prompt.h"
+#include "database.h"
 
 #define SEPARATOR ";\n"
 
@@ -29,7 +30,7 @@ int main(int argc, char **argv) {
         return -1;
     }
 
-    FILE *database = fopen(argv[1], "r+");
+    FILE *database = open_database(argv[1], comm);
 
     if (database == NULL) {
         perror("Error occured");
