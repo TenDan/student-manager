@@ -5,16 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BUFFER 1000
+#include "command.h"
 
-typedef enum Command {
-    Empty,
-    Add,
-    Read,
-    Update,
-    Delete,
-    Unknown,
-} command_t;
+#define BUFFER 1000
 
 /**
  * Printing the prompt for database management
