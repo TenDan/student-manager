@@ -10,4 +10,19 @@ typedef enum Command {
     Unknown,
 } command_t;
 
+// TODO
+int init_command(command_t command);
+
+// TODO
+int read_from_database();
+
+// TODO
+int add_to_database();
+
+// TODO
+int update_in_database();
+
+// TODO
+int remove_from_database();
+
 #endif /* COMMAND_H_ */
