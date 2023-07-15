@@ -2,6 +2,13 @@
 
 int print_prompt() {
     printf(" > ");
+
+    return 0;
+}
+
+int read_prompt(command_t *command) {
+    if (command == NULL) return -1;
+
     char prompt[BUFFER];
 
     if (fgets(prompt, BUFFER, stdin) == NULL) {
@@ -9,14 +16,14 @@ int print_prompt() {
         return -1;
     }
 
-    char *command = strtok(prompt, " \n");
+    char *command_str = strtok(prompt, " \n");
 
-    if (strcmp(command, "add") == 0) {
-        printf("Adding to database...\n");
-    } else if (strcmp(command, "read") == 0) {
-        printf("Reading from database...\n");
+    if (strcmp(command_str, "add") == 0) {
+        *command = Add;
+    } else if (strcmp(command_str, "read") == 0) {
+        *command = Read;
     } else {
-        printf("Unknown command. Try again.\n");
+        *command = Unknown;
         return -1;
     }
 

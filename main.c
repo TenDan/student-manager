@@ -18,7 +18,14 @@ int main(int argc, char **argv) {
 
     int prompt_status = print_prompt();
 
+    if (prompt_status == -1) return -1;
+
+    command_t comm = Empty;
+    prompt_status = read_prompt(&comm);
+
     if (prompt_status == -1) {
+        if (comm == Unknown)
+            printf("Unknown command. Try again.\n");
         return -1;
     }
 
