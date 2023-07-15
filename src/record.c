@@ -1,5 +1,18 @@
 #include "record.h"
 
+student_record* create_record(char *lastname, char *firstname, float grade) {
+    if (grade < 1. || grade > 6. || fmod(grade, .5) != 0.) return NULL;
+    
+    student_record *record = malloc(sizeof(student_record));
+
+    record->id = (__uint128_t) 0;
+    strcpy(record->firstname, firstname);
+    strcpy(record->lastname, lastname);
+    record->grade = grade; 
+
+    return record;
+}
+
 int update_record(char* raw_value, int field, student_record *record_ptr) {
     switch(field) {
         case 0: {
