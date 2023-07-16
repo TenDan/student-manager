@@ -7,10 +7,15 @@ typedef enum Command {
     Read,
     Update,
     Delete,
+    Help,
     Unknown,
 } command_t;
 
-// TODO
+/**
+ * Execute command depending on command argument
+ * @param command Enumerate param of command_t
+ * @return Status code, negative value if error occured
+*/
 int init_command(command_t command);
 
 // TODO
