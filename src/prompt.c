@@ -22,6 +22,8 @@ int read_prompt(command_t *command) {
         *command = Add;
     } else if (strcmp(command_str, "read") == 0) {
         *command = Read;
+    } else if (strcmp(command_str, "help") == 0) {
+        *command = Help;
     } else {
         *command = Unknown;
         return -1;
