@@ -5,6 +5,8 @@
 #include "record.h"
 #include "prompt.h"
 #include "database.h"
+#include "command.h"
+#include "help.h"
 
 #define SEPARATOR ";\n"
 
@@ -26,8 +28,15 @@ int main(int argc, char **argv) {
 
     if (prompt_status == -1) {
         if (comm == Unknown)
-            printf("Unknown command. Try again.\n");
-        return -1;
+            emit_try_help();
+        return prompt_status;
+    }
+
+    int command_status = init_command(comm);
+
+    if (command_status == -1) {
+        printf("Error occured...\n");
+        return command_status;
     }
 
     FILE *database = open_database(argv[1], comm);
