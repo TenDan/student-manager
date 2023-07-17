@@ -10,6 +10,12 @@ int init_command(command_t command) {
             get_help();
             break;
         }
+        // TODO
+        case Add:
+        case Read:
+        case Update:
+        case Delete:
+            break;
         default: 
             return -1;
     }
