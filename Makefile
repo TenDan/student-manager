@@ -1,7 +1,7 @@
 # Set compiler
 CC=clang
 # Set compiler flags (should be valid for clang and gcc)
-CFLAGS=-g -Wall -lm -Isrc
+CFLAGS=-lm -Isrc
 # Binary executable name
 BIN=cms
 
@@ -30,10 +30,10 @@ release: before-release
 	$(CC) $(CFLAGS) -O1 $(sources) -o $(RELEASE_PATH)/$(BIN)
 
 debug: before-debug
-	$(CC) $(CFLAGS) $(sources) -o $(DEBUG_PATH)/$(BIN)
+	$(CC) $(CFLAGS) -g -Wall $(sources) -o $(DEBUG_PATH)/$(BIN)
 
 sanitize: before-debug
-	$(CC) $(CFLAGS) $(sources) -o $(DEBUG_PATH)/$(BIN) -fsanitize=address
+	$(CC) $(CFLAGS) -g -Wall $(sources) -o $(DEBUG_PATH)/$(BIN) -fsanitize=address
 
 
 clean:
