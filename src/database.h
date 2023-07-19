@@ -4,6 +4,10 @@
 #include <stdio.h>
 
 #include "command.h"
+#include "record.h"
+#include "util.h"
+
+#define SEPARATOR ";\n"
 
 /**
  * Open embedded in file database
@@ -13,7 +17,6 @@
 */
 FILE* open_database(char *db_path, command_t command);
 
-// TODO
-int read_database();
+int read_database(FILE* db);
 
 #endif /* DATABASE_H_ */
