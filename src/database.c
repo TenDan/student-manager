@@ -18,18 +18,20 @@ FILE* open_database(char* db_path, command_t command) {
 int read_database(FILE* db) {
     size_t line_len = 0;
     char *line = NULL, *token = NULL;
-    int chars_read, line_num = 0;
+    int chars_read = 0;
 
     // Read header of file (column names)
     if ((chars_read = getline(&line, &line_len, db)) != -1) {
         token = strtok(line, SEPARATOR);
+        int j = 0;
         while (token != NULL) {
-            if (line_num != 0) break;
             printf("\t%s", token);
             token = strtok(NULL, SEPARATOR);
+            ++j;
         }
         printf("\n");
-        ++line_num;
+        if (j != 3) return -1;
+        //++line_num;
     }
     
     line_len = 0;
@@ -49,7 +51,7 @@ int read_database(FILE* db) {
             ++j;
         }
         if (status != -1) print_record(&record);
-        ++line_num;
+        //++line_num;
         line_len = 0;
         free(line);
     }

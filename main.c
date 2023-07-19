@@ -39,6 +39,7 @@ int main(int argc, char **argv) {
     FILE *database = open_database(argv[1], comm);
 
     if (database == NULL) {
+        // TODO perror handling
         perror("Error occured");
         return -1;
     }
@@ -46,7 +47,7 @@ int main(int argc, char **argv) {
     int read_status = read_database(database);
 
     if (read_status == -1) {
-        printf("Error occured with database read...");
+        printf("Error occured with database read...\n");
         return read_status;
     }
 
