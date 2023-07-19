@@ -40,7 +40,7 @@ int update_record(char* raw_value, int field, student_record *record_ptr) {
 }
 
 void print_record(student_record *record) {
-    printf("Id: %llx\n", (unsigned long long)record->id);
-    printf("Name: %s %s\n", record->firstname, record->lastname);
-    printf("Grade: %f\n", record->grade);
+    printf("\t%2llx", (unsigned long long)record->id);
+    printf("\t%8s\t%9s", record->lastname, record->firstname);
+    printf("\t%5f\n", record->grade);
 }
