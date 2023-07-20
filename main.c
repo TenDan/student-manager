@@ -29,13 +29,6 @@ int main(int argc, char **argv) {
         return prompt_status;
     }
 
-    int command_status = init_command(comm);
-
-    if (command_status == -1) {
-        printf("Error occured...\n");
-        return command_status;
-    }
-
     FILE *database = open_database(argv[1], comm);
 
     if (database == NULL) {
@@ -44,11 +37,11 @@ int main(int argc, char **argv) {
         return -1;
     }
 
-    int read_status = read_database(database);
+    int command_status = init_command(comm, database);
 
-    if (read_status == -1) {
-        printf("Error occured with database read...\n");
-        return read_status;
+    if (command_status == -1) {
+        printf("Error occured...\n");
+        return command_status;
     }
 
     printf("\n");

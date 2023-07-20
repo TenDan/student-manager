@@ -11,23 +11,31 @@ typedef enum Command {
     Unknown,
 } command_t;
 
+#include "database.h"
+
 /**
  * Execute command depending on command argument
  * @param command Enumerate param of command_t
+ * @param db Database file pointer
  * @return Status code, negative value if error occured
 */
-int init_command(command_t command);
+int init_command(command_t command, FILE* db);
+
+/**
+ * Read from database with raw query
+ * @param db Database file pointer
+ * @param query Raw query string
+ * @return Status code, negative value if error occured
+*/
+int read_from_database(FILE* db, char* query);
 
 // TODO
-int read_from_database();
+int add_to_database(FILE* db);
 
 // TODO
-int add_to_database();
+int update_in_database(FILE* db);
 
 // TODO
-int update_in_database();
-
-// TODO
-int remove_from_database();
+int remove_from_database(FILE* db);
 
 #endif /* COMMAND_H_ */
