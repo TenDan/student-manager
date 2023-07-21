@@ -31,7 +31,10 @@ int read_database(FILE* db) {
             ++j;
         }
         printf("\n");
-        if (j != 4) return -1;
+        if (j != 4) {
+            free(line);
+            return -1;
+        }
         ++line_num;
     }
     

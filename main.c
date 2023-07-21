@@ -32,7 +32,6 @@ int main(int argc, char **argv) {
     FILE *database = open_database(argv[1], comm);
 
     if (database == NULL) {
-        // TODO perror handling
         perror("Error occured");
         return -1;
     }
