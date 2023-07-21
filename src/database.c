@@ -30,13 +30,13 @@ int read_database(FILE* db) {
             token = strtok(NULL, SEPARATOR);
             ++j;
         }
-        printf("\n");
         if (j != 4) {
             free(line);
             return -1;
         }
         ++line_num;
     }
+    printf("\n");
     
     line_len = 0;
     free(line);
