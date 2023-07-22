@@ -1,16 +1,7 @@
 #ifndef COMMAND_H_
 #define COMMAND_H_
 
-typedef enum Command {
-    Empty,
-    Add,
-    Read,
-    Update,
-    Delete,
-    Help,
-    Unknown,
-} command_t;
-
+#include "types.h"
 #include "database.h"
 
 /**

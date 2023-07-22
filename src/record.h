@@ -6,14 +6,7 @@
 #include <string.h>
 #include <math.h>
 
-#define NAME_BUFFER 100
-
-typedef struct student_record {
-    __uint128_t id;
-    char lastname[NAME_BUFFER];
-    char firstname[NAME_BUFFER];
-    float grade;
-} student_record;
+#include "types.h"
 
 // Update database functions
 
