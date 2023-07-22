@@ -2,9 +2,12 @@
 #define SERIALIZE_H_
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "types.h"
+#include "util.h"
+#include "record.h"
 
 #define RECORD_BUFFER 1000
 
