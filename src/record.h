@@ -7,6 +7,7 @@
 #include <math.h>
 
 #include "types.h"
+#include "serialize.h"
 
 // Update database functions
 
