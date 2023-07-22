@@ -6,8 +6,7 @@
 #include "command.h"
 #include "record.h"
 #include "util.h"
-
-#define SEPARATOR ";\n"
+#include "header.h"
 
 /**
  * Open embedded in file database
