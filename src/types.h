@@ -3,6 +3,8 @@
 
 #define NAME_BUFFER 100
 
+typedef __uint128_t uint128_t;
+
 typedef enum Command {
     Empty,
     Add,
@@ -14,7 +16,7 @@ typedef enum Command {
 } command_t;
 
 typedef struct student_record {
-    __uint128_t id;
+    uint128_t id;
     char lastname[NAME_BUFFER];
     char firstname[NAME_BUFFER];
     float grade;
