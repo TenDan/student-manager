@@ -32,14 +32,14 @@ int main(int argc, char **argv) {
     FILE *database = open_database(argv[1], comm);
 
     if (database == NULL) {
-        perror("Error occured");
+        perror("Database opening error occured");
         return -1;
     }
 
     int command_status = init_command(comm, database);
 
     if (command_status == -1) {
-        printf("Error occured...\n");
+        fprintf(stderr, "Error occured...\n");
         return command_status;
     }
 
