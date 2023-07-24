@@ -1,9 +1,9 @@
 # Set compiler
-CC=clang
+CC = clang
 # Set compiler flags (should be valid for clang and gcc)
-CFLAGS=-lm -Isrc
+CFLAGS = -lm -Isrc
 # Binary executable name
-BIN=cms
+BIN = cms
 
 # Set source global extension (depending on being C or C++ source files)
 SRC_EXTENSION = c
@@ -29,12 +29,13 @@ before-release:
 release: before-release
 	$(CC) $(CFLAGS) -O1 $(sources) -o $(RELEASE_PATH)/$(BIN)
 
+DEBUG_FLAGS = -g -Wall
+
 debug: before-debug
-	$(CC) $(CFLAGS) -g -Wall $(sources) -o $(DEBUG_PATH)/$(BIN)
+	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(sources) -o $(DEBUG_PATH)/$(BIN)
 
 sanitize: before-debug
-	$(CC) $(CFLAGS) -g -Wall $(sources) -o $(DEBUG_PATH)/$(BIN) -fsanitize=address
-
+	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(sources) -o $(DEBUG_PATH)/$(BIN) -fsanitize=address
 
 clean:
 	$(RM) -r $(BIN) *.dSYM
