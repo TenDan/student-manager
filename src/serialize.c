@@ -10,8 +10,8 @@ char* serialize_record(student_record* source) {
     */
     // Static allocation
     static char record_str[RECORD_BUFFER];
-    sprintf(
-        record_str, "%llx;%s;%s;%f", 
+    snprintf(
+        record_str, RECORD_BUFFER, "%llx;%s;%s;%f", 
         (unsigned long long)source->id,
         source->lastname,
         source->firstname,

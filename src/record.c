@@ -6,8 +6,8 @@ student_record* create_record(char *lastname, char *firstname, float grade) {
     student_record *record = malloc(sizeof(student_record));
 
     record->id = (__uint128_t) 0;
-    strcpy(record->firstname, firstname);
-    strcpy(record->lastname, lastname);
+    strncpy(record->firstname, firstname, NAME_BUFFER);
+    strncpy(record->lastname, lastname, NAME_BUFFER);
     record->grade = grade; 
 
     return record;
@@ -22,10 +22,10 @@ int update_record(char* raw_value, int field, student_record *record_ptr) {
             break;
         }
         case 1:
-            strcpy(record_ptr->lastname, raw_value);
+            strncpy(record_ptr->lastname, raw_value, NAME_BUFFER);
             break;
         case 2:
-            strcpy(record_ptr->firstname, raw_value);
+            strncpy(record_ptr->firstname, raw_value, NAME_BUFFER);
             break;
         case 3: {
             double new_grade = atof(raw_value);
