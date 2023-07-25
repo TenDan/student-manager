@@ -1,6 +1,6 @@
 #include "record.h"
 
-student_record* create_record(char *lastname, char *firstname, float grade) {
+student_record* create_record(const char *lastname, const char *firstname, const float grade) {
     if (grade < 1. || grade > 6. || fmod(grade, .5) != 0.) return NULL;
     
     student_record *record = malloc(sizeof(student_record));
@@ -13,7 +13,7 @@ student_record* create_record(char *lastname, char *firstname, float grade) {
     return record;
 }
 
-int update_record(char* raw_value, int field, student_record *record_ptr) {
+int update_record(const char *raw_value, const int field, student_record *record_ptr) {
     switch(field) {
         case 0: {
             __uint128_t new_id = (__uint128_t) atoi(raw_value);
@@ -39,7 +39,7 @@ int update_record(char* raw_value, int field, student_record *record_ptr) {
     return 0;
 }
 
-void print_record(student_record *record) {
+void print_record(const student_record *record) {
     char *result = serialize_record(record);
     printf("%s\n", result);
     /* printf("\t%2llx", (unsigned long long)record->id);

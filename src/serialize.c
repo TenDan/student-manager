@@ -1,6 +1,6 @@
 #include "serialize.h"
 
-char* serialize_record(student_record* source) {
+char* serialize_record(const student_record *source) {
     /* 
     char id_str[64];
     char grade_str[100];
@@ -22,7 +22,7 @@ char* serialize_record(student_record* source) {
     return NULL;
 }
 
-student_record* deserialize_record(char* source) {
+student_record* deserialize_record(char *source) {
     student_record *record = (student_record*) malloc(sizeof(student_record));
 
     if (record == NULL) return NULL;

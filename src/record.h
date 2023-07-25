@@ -12,13 +12,6 @@
 // Update database functions
 
 /**
- * Add student's record to database file
- * @param   record_ptr  Pointer to a student's record structure
- * @return  Status code, negative value means that error occured
-*/
-int add_record(student_record *record_ptr);
-
-/**
  * Update student's record in database file
  * @param   id          Id of record to update
  * @param   record_ptr  Pointer to student's record structure
@@ -42,7 +35,7 @@ int remove_record(__uint128_t id);
  * @param   grade       Student's grade
  * @return  Student record structure pointer, NULL if error occured
 */
-student_record* create_record(char *lastname, char *firstname, float grade);
+student_record* create_record(const char *lastname, const char *firstname, const float grade);
 
 /**
  * Updates record passed as pointer
@@ -55,12 +48,12 @@ student_record* create_record(char *lastname, char *firstname, float grade);
  * @param   record_ptr      Pointer to student's record which will be updated
  * @return  Status code, negative value means that error occured
 */
-int update_record(char* raw_value, int field, student_record *record_ptr);
+int update_record(const char *raw_value, const int field, student_record *record_ptr);
 
 /**
  * Prints out record passed as pointer
  * @param   record  Record pointer
 */
-void print_record(student_record *record);
+void print_record(const student_record *record);
 
 #endif /* RECORD_H_ */

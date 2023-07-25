@@ -1,6 +1,6 @@
 #include "database.h"
 
-FILE* open_database(char* db_path, command_t command) {
+FILE* open_database(const char *db_path, command_t command) {
     // TODO
     switch (command) {
         case Add:
@@ -15,7 +15,7 @@ FILE* open_database(char* db_path, command_t command) {
     }
 }
 
-int read_database(FILE* db) {
+int read_database(FILE *db) {
     size_t line_len = 0;
     char *line = NULL;
     int chars_read = 0/* , line_num = 0 */;
@@ -47,5 +47,10 @@ int read_database(FILE* db) {
 
     free(line);
 
+    return 0;
+}
+
+int add_record_to_database(FILE* db, const char *raw_record) {
+    fwrite(raw_record, sizeof(char), sizeof(char) * strlen(raw_record), db);
     return 0;
 }
