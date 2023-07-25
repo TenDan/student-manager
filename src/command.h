@@ -18,10 +18,10 @@ int init_command(command_t command, FILE* db);
  * @param query Raw query string
  * @return Status code, negative value if error occured
 */
-int read_from_database(FILE* db, char* query);
+int read_from_database(FILE* db, const char* query);
 
 // TODO
-int add_to_database(FILE* db);
+int add_to_database(FILE* db, const student_record* record);
 
 // TODO
 int update_in_database(FILE* db);
