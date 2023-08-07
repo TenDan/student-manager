@@ -51,6 +51,15 @@ int read_database(FILE *db) {
 }
 
 int add_record_to_database(FILE* db, const char *raw_record) {
-    fwrite(raw_record, sizeof(char), sizeof(char) * strlen(raw_record), db);
+    if (fseek(db, -1L, SEEK_END) != 0) {
+        return -1;
+    }
+    // need to fix newline checker
+    if (fgetc(db) != '\n')
+        fputc('\n', db);
+    rewind(db);
+    size_t bytes_written = fwrite(raw_record, sizeof(char), sizeof(char) * strlen(raw_record), db);
+    if (bytes_written == 0)
+        return -1;
     return 0;
 }
