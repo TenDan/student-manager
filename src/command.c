@@ -1,5 +1,6 @@
 #include "command.h"
-#include "help.h"
+
+#define BUFFER 100
 
 int init_command(command_t command, FILE* db) {
     switch (command) {
@@ -13,7 +14,35 @@ int init_command(command_t command, FILE* db) {
         case Read:
             return read_from_database(db, "");
         // TODO
-        case Add:
+        case Add: {
+            char prompt[BUFFER];
+            student_record record;
+
+            printf("Lastname: ");
+            if (fgets(prompt, BUFFER, stdin) == NULL) {
+                printf("Error occured. Try again. \n");
+                return -1;
+            }
+            prompt[strcspn(prompt, "\n")] = '\0';
+            update_record(prompt, 1, &record);
+
+            printf("Firstname: ");
+            if (fgets(prompt, BUFFER, stdin) == NULL) {
+                printf("Error occured. Try again. \n");
+                return -1;
+            }
+            prompt[strcspn(prompt, "\n")] = '\0';
+            update_record(prompt, 2, &record);
+
+            printf("Grade: ");
+            if (fgets(prompt, BUFFER, stdin) == NULL) {
+                printf("Error occured. Try again. \n");
+                return -1;
+            }
+            prompt[strcspn(prompt, "\n")] = '\0';
+            update_record(prompt, 3, &record);
+            return add_to_database(db, &record);
+        }
         case Update:
         case Delete:
             printf("Not implemented yet!\n");

@@ -3,6 +3,8 @@
 
 #include "types.h"
 #include "database.h"
+#include "record.h"
+#include "help.h"
 
 /**
  * Execute command depending on command argument
